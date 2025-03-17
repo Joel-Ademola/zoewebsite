@@ -20,41 +20,40 @@ export default function Home() {
   ];
 
   return (
+    <>
     <div
-      className="bg-fixed bg-cover bg-center bg-no-repeat  "
+      className="bg-fixed bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${campus})`, height: "100vh" }}
     >
-      <div className=" absolute bg-black min-w-full min-h-full opacity-60">
+      <div className="absolute bg-black min-w-full min-h-full opacity-60">
         <div className="relative"></div>
       </div>
       <div className="relative isolate px-6 pt-14 lg:px-8 min-h-screen">
-        <div className=" flex mx-auto max-w-2xl justify-center -mb-32 py-32 ">
-          {/* <div className=" flex mx-auto max-w-2xl justify-center py-32 sm:py-48 lg:py-56"> */}
-
-          <img src={logo} alt="logo" className=" h-52" />
+        <div className="flex mx-auto max-w-2xl justify-center -mb-32 py-32">
+          <img src={logo} alt="logo" className="h-52" />
         </div>
-        <h1 className="text-5xl  tracking-tight uppercase text-balance text-white font-bold sm:text-7xl">
+        <h1 className="text-5xl tracking-tight uppercase text-white font-bold sm:text-7xl">
           Zoe Tabernacle
         </h1>
-        <p className="mt-8 text-lg font-medium text-pretty text-white sm:text-xl/8">
+        <p className="mt-8 text-lg font-medium text-white sm:text-xl/8">
           Leading Students to Christ...
         </p>
         <div className="mt-10 flex items-center justify-center gap-x-6">
           <a
             href="#"
-            className=" uppercase bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="uppercase bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500"
           >
-            who we are
+            Who we are
           </a>
           <a
             href="#"
-            className=" uppercase bg-black px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="uppercase bg-black px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-gray-800"
           >
-            our events
+            Our events
           </a>
         </div>
       </div>
-
+    </div>
       <div className="w-full bg-none py-12 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h4 className="text-2xl font-bold text-gray-800">
@@ -94,6 +93,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
