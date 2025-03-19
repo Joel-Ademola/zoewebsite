@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
-
+import RegistrationModal from "../components/RegistrationModal";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon, TrashIcon } from "@heroicons/react/24/outline";
 import {
@@ -251,248 +251,23 @@ export default function EventDetail() {
   };
   return (
     <>
-    <div
-      className="bg-fixed bg-cover bg-center bg-no-repeat  "
-      style={{ backgroundImage: `url(${campus})`, height: "55vh" }}
-    >
-      <div className=" absolute bg-black min-w-full min-h-[55vh] opacity-70">
-        <div className="relative"></div>
-      </div>
-      <div className="relative isolate px-6 lg:px-8 sm:pt-40 pt-20 min-h-[55vh]">
-        <h1 className="text-5xl  tracking-tight uppercase text-balance text-white font-bold sm:text-7xl">
-          Fit for the Master’s Use
-        </h1>
-        <p className="mt-8 text-2xl font-medium text-pretty text-white sm:text-lg">
-          12 - 15 JUNE 2025
-        </p>
-        <div className="flex justify-center mt-10">
-          {/* Button to Open Modal */}
-          <button
-            onClick={() => setIsOpen(true)}
-            className="bg-white cursor-pointer text-black px-4 py-2 rounded hover:bg-primary hover:text-white ease-in duration-200"
-          >
-            Get Register Now
-          </button>
-
-          {/* Modal/Dialog */}
-          <Dialog
-            open={isOpen}
-            onClose={() => setIsOpen(false)}
-            className="relative z-50"
-          >
-            {/* Background Overlay */}
-            <div className="fixed inset-0 bg-black/50" aria-hidden="true" />
-
-            {/* Centered Modal */}
-            <div className="fixed inset-0 flex items-center justify-center">
-              <Dialog.Panel
-                className="w-full max-w-2xl bg-white p-6 rounded-lg shadow-lg max-h-[95vh] overflow-y-auto"
-                style={{ scrollbarWidth: "none" }}
-              >
-                <Dialog.Title className="text-2xl font-bold text-center ">
-                  <>
-                    <div className=" max-w-7xl mx-auto text-center">
-                      <h1 className="   flex justify-center font-bold text-gray-700 text-lg sm:text-xl  text-dark-0  p-2">
-                        Conference Registration
-                      </h1>
-                    </div>
-                  </>
-                </Dialog.Title>
-
-                {/* Close Button */}
-                <button
-                  onClick={() => setIsOpen(false)}
-                  className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
-                >
-                  ✖
-                </button>
-
-                {/* Registration Form */}
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                  {/* Name & Gender */}
-                  <div>
-                    <label className="block font-medium text-gray-700 text-sm">
-                      Your Name
-                    </label>
-                    <input
-                      {...register("name", { required: "Name is required" })}
-                      className="w-full p-2 border border-gray-300 rounded"
-                      placeholder="Enter your name"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block font-medium text-gray-700 text-sm">
-                      Gender
-                    </label>
-                    <select
-                      {...register("gender")}
-                      className="w-full p-2 border text-gray-700 text-sm border-gray-300 rounded"
-                    >
-                      <option value="">Select gender</option>
-                      <option value="Male">Male</option>
-                      <option value="Female">Female</option>
-                    </select>
-                  </div>
-
-                  {/* Marital Status */}
-                  <div>
-                    <label className="block font-medium text-gray-700 text-sm">
-                      Are you single or married?
-                    </label>
-                    <select
-                      {...register("maritalStatus")}
-                      className="w-full p-2 border text-gray-700 text-sm border-gray-300 rounded"
-                    >
-                      <option value="">Select one</option>
-                      <option value="Single">Single</option>
-                      <option value="Married">Married</option>
-                    </select>
-                  </div>
-
-                  {/* Sharing Room */}
-                  <div>
-                    <label className="block font-medium text-gray-700 text-sm">
-                      Are you sharing a room?
-                    </label>
-                    <select
-                      {...register("sharingRoom")}
-                      className="w-full p-2 border text-gray-700 text-sm border-gray-300 rounded"
-                    >
-                      <option value="">Select one</option>
-                      <option value="Yes">Yes</option>
-                      <option value="No">No</option>
-                    </select>
-                  </div>
-
-                  {/* Contact Info */}
-                  <div>
-                    <label className="block font-medium text-gray-700 text-sm">
-                      Phone Number
-                    </label>
-                    <input
-                      {...register("phone", {
-                        required: "Phone number is required",
-                      })}
-                      className="w-full p-2 border border-gray-300 rounded"
-                      placeholder="Enter phone number"
-                      type="tel"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block font-medium text-gray-700 text-sm">
-                      Email Address
-                    </label>
-                    <input
-                      {...register("email", { required: "Email is required" })}
-                      className="w-full p-2 border border-gray-300 rounded"
-                      placeholder="Enter email"
-                      type="email"
-                    />
-                  </div>
-
-                  {/* Attendants Section */}
-                  <div>
-                    <label className="block font-medium text-gray-700 text-sm">
-                      Names & Gender of Attendants
-                    </label>
-                    {attendants.map((_, index) => (
-                      <div key={index} className="flex space-x-4 mb-2">
-                        <input
-                          {...register(`attendants[${index}].name`)}
-                          className="w-full p-2 border border-gray-300 rounded"
-                          placeholder="Attendant's name"
-                        />
-                        <select
-                          {...register(`attendants[${index}].gender`)}
-                          className="p-2 border text-gray-700 text-sm border-gray-300 rounded"
-                        >
-                          <option value="">Select gender</option>
-                          <option value="Male">Male</option>
-                          <option value="Female">Female</option>
-                        </select>
-                        <button
-                          type="button"
-                          onClick={() => handleRemoveAttendant(index)}
-                          className=" text-red-500 px-3 py-1 rounded"
-                        >
-                          <TrashIcon className="h-6 w-6" aria-hidden="true" />
-                        </button>
-                      </div>
-                    ))}
-                    <button
-                      type="button"
-                      onClick={handleAddAttendant}
-                      className="mt-2 bg-primary text-sm cursor-pointer text-white px-4 py-2"
-                    >
-                      Add Attendant
-                    </button>
-                  </div>
-
-                  {/* Age Bracket */}
-                  <div>
-                    <label className="block font-medium text-gray-700 text-sm">
-                      Age Bracket
-                    </label>
-                    <select
-                      {...register("ageBracket")}
-                      className="w-full text-gray-700 text-sm p-2 border border-gray-300 rounded"
-                    >
-                      <option value="">Select Age Bracket</option>
-                      <option value="0-2">0-2</option>
-                      <option value="2-10">2-10</option>
-                      <option value="10-18">10-18</option>
-                      <option value="18-20">18-20</option>
-                      <option value="21-39">21-39</option>
-                    </select>
-                  </div>
-
-                  {/* Volunteer Opportunities */}
-                  <div>
-                    <label className="block font-medium text-gray-700 text-sm">
-                      Conference Volunteer Opportunities
-                    </label>
-                    {[
-                      "Media team",
-                      "Music and worship team",
-                      "Organization and logistics team",
-                      "Bookstand and Kiosk",
-                      "Stage management and Teardown",
-                      "Usher, protocol, and security",
-                      "Youth Ministry",
-                      "Logistics/Venue Department",
-                    ].map((team, index) => (
-                      <div
-                        key={index}
-                        className="flex text-gray-700 py-2 text-sm items-center space-x-2"
-                      >
-                        <input
-                          type="checkbox"
-                          {...register("volunteerTeams")}
-                          value={team}
-                          className="w-4  h-4"
-                        />
-                        <label>{team}</label>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Submit Button */}
-                  <button
-                    type="submit"
-                    className="w-full border cursor-pointer border-primary text-primary hover:bg-primary hover:text-white ease-in duration-200  p-3 rounded"
-                  >
-                    Submit Registration
-                  </button>
-                </form>
-              </Dialog.Panel>
-            </div>
-          </Dialog>
+      <div
+        className="bg-fixed bg-cover bg-center bg-no-repeat  "
+        style={{ backgroundImage: `url(${campus})`, height: "55vh" }}
+      >
+        <div className=" absolute bg-black min-w-full min-h-[55vh] opacity-70">
+          <div className="relative"></div>
+        </div>
+        <div className="relative isolate px-6 lg:px-8 sm:pt-40 pt-20 min-h-[55vh]">
+          <h1 className="text-5xl  tracking-tight uppercase text-balance text-white font-bold sm:text-7xl">
+            Fit for the Master’s Use
+          </h1>
+          <p className="mt-8 text-2xl font-medium text-pretty text-white sm:text-lg">
+            12 - 15 JUNE 2025
+          </p>
+          <RegistrationModal />
         </div>
       </div>
-      
-    </div>
       <div className=" max-w-6xl flex-col justify-center mx-auto">
         <div className="w-full bg-none py-12 px-4">
           <div className="max-w-7xl mx-auto text-left">
@@ -566,7 +341,7 @@ export default function EventDetail() {
             {programSchedule.map((daySchedule, index) => (
               <div
                 key={index}
-                className="bg-white shadow-md p-6 border-l-4 border-primary"
+                className="bg-white shadow-md p-6 border-l-4 border-black"
               >
                 {/* Day Heading */}
                 <h3 className="text-2xl font-bold text-primary mb-4">

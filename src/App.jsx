@@ -6,6 +6,7 @@ import { Routes } from "react-router-dom";
 import { Route, Navigate } from "react-router-dom";
 import Home from "./Pages/Home";
 import EventDetail from "./Pages/EventDetail";
+import Registrations from "./Pages/Registrations";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/event" element={<EventDetail />} />
+          <Route path="/event/fit25-reg" element={<Registrations />} />
         </Routes>
       </div>
 
