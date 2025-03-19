@@ -8,6 +8,44 @@ export default function Registrations() {
   const [selectedAttendant, setSelectedAttendant] = useState(null);
 
   // Preload Dummy Data for Testing
+  const dummyData = [
+    {
+      id: 1,
+      name: "John Doe",
+      gender: "Male",
+      phone: "123-456-7890",
+      email: "johndoe@example.com",
+      ageBracket: "18-25",
+      volunteerTeams: ["Community Service", "Event Planning"],
+      attendants: [
+        { name: "Michael Doe", gender: "Male" },
+        { name: "Sarah Doe", gender: "Female" },
+      ],
+      additionalInfo: "Loves to help out in tech events.",
+    },
+    {
+      id: 2,
+      name: "Jane Smith",
+      gender: "Female",
+      phone: "987-654-3210",
+      email: "janesmith@example.com",
+      ageBracket: "26-35",
+      volunteerTeams: ["Marketing", "Logistics"],
+      attendants: [{ name: "Emily Smith", gender: "Female" }],
+      additionalInfo: "Has experience in social media marketing.",
+    },
+    {
+      id: 3,
+      name: "Alice Johnson",
+      gender: "Female",
+      phone: "555-666-7777",
+      email: "alicej@example.com",
+      ageBracket: "36-45",
+      volunteerTeams: ["Finance", "Fundraising"],
+      attendants: [], // No attendants for this user
+      additionalInfo: "Background in non-profit finance management.",
+    },
+  ];
   useEffect(() => {
     axios
       .get("https://zoeweb-opal.vercel.app/registrations")
@@ -19,44 +57,6 @@ export default function Registrations() {
         console.error("There was an error fetching the registrations!", error);
         setLoading(false);
       });
-    const dummyData = [
-      {
-        id: 1,
-        name: "John Doe",
-        gender: "Male",
-        phone: "123-456-7890",
-        email: "johndoe@example.com",
-        ageBracket: "18-25",
-        volunteerTeams: ["Community Service", "Event Planning"],
-        attendants: [
-          { name: "Michael Doe", gender: "Male" },
-          { name: "Sarah Doe", gender: "Female" },
-        ],
-        additionalInfo: "Loves to help out in tech events.",
-      },
-      {
-        id: 2,
-        name: "Jane Smith",
-        gender: "Female",
-        phone: "987-654-3210",
-        email: "janesmith@example.com",
-        ageBracket: "26-35",
-        volunteerTeams: ["Marketing", "Logistics"],
-        attendants: [{ name: "Emily Smith", gender: "Female" }],
-        additionalInfo: "Has experience in social media marketing.",
-      },
-      {
-        id: 3,
-        name: "Alice Johnson",
-        gender: "Female",
-        phone: "555-666-7777",
-        email: "alicej@example.com",
-        ageBracket: "36-45",
-        volunteerTeams: ["Finance", "Fundraising"],
-        attendants: [], // No attendants for this user
-        additionalInfo: "Background in non-profit finance management.",
-      },
-    ];
 
     // Simulate loading time
     setTimeout(() => {
@@ -145,7 +145,7 @@ export default function Registrations() {
               </p>
               <p>
                 <strong>Volunteer Teams:</strong>{" "}
-                {selectedAttendant.volunteerTeams.join(", ")}
+                {selectedAttendant.volunteerOpportunities.join(", ")}
               </p>
 
               {/* Display Attendants */}
