@@ -135,7 +135,7 @@ export default function Registrations() {
                 <strong>Gender:</strong> {selectedAttendant.gender}
               </p>
               <p>
-                <strong>Phone:</strong> {selectedAttendant.phone}
+                <strong>Phone:</strong> {selectedAttendant.phoneNumber}
               </p>
               <p>
                 <strong>Email:</strong> {selectedAttendant.email}
